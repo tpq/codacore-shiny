@@ -12,5 +12,6 @@ Then run from the command-line
 
 ```
 git clone git@github.com:tpq/codacore-shiny
+cd codacore-shiny
 Rscript codacore-shiny/runApp.R
 ```

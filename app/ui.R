@@ -40,11 +40,10 @@ ui <- fluidPage(
                 value = 10, min = 1, max = 10, step = 1),
     
     radioButtons("testset",
-                label = "Select size of test set",
-                choices = c("33%", "20%", "0%")),
+                 label = "Select size of test set",
+                 choices = c("33%", "20%", "0%")),
     
-    actionButton("goButton", "Train model"),
-    textOutput("alert")
+    actionButton("goButton", "Train model")
   ),
   
   mainPanel(

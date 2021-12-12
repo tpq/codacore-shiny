@@ -10,7 +10,8 @@ server <- function(input, output) {
       
     }else if(input$data == "HIV"){
       
-      stop("Sorry, this is not yet implemented!")
+      dat <- codacore::HIV
+      x <- dat[,1:(ncol(dat)-2)]
     }
     
     if(input$zerostrat == "Offset"){
@@ -31,7 +32,8 @@ server <- function(input, output) {
       
     }else if(input$data == "HIV"){
       
-      stop("Sorry, this is not yet implemented!")
+      dat <- codacore::HIV
+      y <- dat[,ncol(dat)]
     }
     
     return(y)
@@ -39,6 +41,13 @@ server <- function(input, output) {
   
   # This REACTIVE runs codacore when the ACTION button is clicked
   run_codacore <- eventReactive(input$goButton, {
+    
+    notify_patience <-
+      showNotification("Please be patient while the model is training...",
+                       type = "message", duration = NULL, closeButton = FALSE)
+    on.exit(removeNotification(notify_patience), add = TRUE)
+    
+    
     codacore::codacore(
       ready_x(), ready_y(),
       logRatioType = input$logRatioType, lambda = input$lambda
@@ -55,10 +64,5 @@ server <- function(input, output) {
   output$codacore_boxplot <- renderPlot({
     res <- run_codacore()
     plot(res, input$ratio_select)
-  })
-  
-  # NOTE: I am not yet sure how to run this only when model is training...
-  output$alert <- renderText({
-    "(Please be patient while model runs...)"
   })
 }

@@ -5,7 +5,7 @@ A working RShiny app for the codacore R package
 To test the app on Linux, first install the development branch of R-codacore. From R run
 
 ```
-devtools::install_github("tpq/R-codacore")
+devtools::install_github("egr95/R-codacore")
 ```
 
 Then run from the command-line

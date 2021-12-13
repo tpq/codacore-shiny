@@ -18,8 +18,17 @@ ui <- fluidPage(
                "should contain covariates with the first column as the target label.",
                "Any additional columns within Y will be treated as potential",
                "confounders and used to adjust the model."),
-      actionButton("user_x", "Upload X"),
-      actionButton("user_y", "Upload Y")
+      
+      fileInput("user_x", "Upload X", accept = ".csv"),
+      textOutput("xdim"),
+      br(),
+      
+      fileInput("user_y", "Upload Y", accept = ".csv"),
+      textOutput("ydim"),
+      br(),
+      
+      textOutput("zdim"),
+      br()
     ),
     
     radioButtons("zerostrat",

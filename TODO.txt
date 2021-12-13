@@ -1,0 +1,17 @@
+File Input
+-------------
+* Need proper error handling for clicking "Train model" without uploading file
+
+CodaCoRe
+-------------
+* Test set is option in UI but not implemented
+* Need to handle Z covariates for training and testing
+
+Results
+-------------
+* Need button to download key results from server
+* Show user size of training and test sets
+
+General
+-------------
+* Add example data to /example-data folder

@@ -16,6 +16,8 @@ server <- function(input, output) {
     }else if(input$data == "Use your own"){
       
       req(input$user_x) # req() makes server wait until upload is complete
+      if(tools::file_ext(input$user_x$name) != "csv"){
+        validate("Invalid file; Please select a .csv file.")}
       x <- read.csv(input$user_x$datapath, row.names = 1, header = TRUE)
     }
     
@@ -43,6 +45,8 @@ server <- function(input, output) {
     }else if(input$data == "Use your own"){
       
       req(input$user_y) # req() makes server wait until upload is complete
+      if(tools::file_ext(input$user_y$name) != "csv"){
+        validate("Invalid file. Please select a .csv file.")}
       y <- read.csv(input$user_y$datapath, row.names = 1, header = TRUE)
       y <- y[,1,drop=TRUE]
     }
@@ -56,6 +60,8 @@ server <- function(input, output) {
     if(input$data == "Use your own"){
       
       req(input$user_y) # req() makes server wait until upload is complete
+      if(tools::file_ext(input$user_y$name) != "csv"){
+        validate("")} # leave blank since message is already provided by ready_y()
       y <- read.csv(input$user_y$datapath, row.names = 1, header = TRUE)
       z <- y[,-1,drop=FALSE]
       
